@@ -7,7 +7,7 @@ import os
 def main():
     # Ścieżki do plików modeli i wyników
     model_file = "model.pkl"
-    output_file = "wyniki.json"
+    output_file = "blaszkiewicz_daniel.json"
 
     # Ścieżka do środowiska wirtualnego
     venv_python = os.path.join("venv", "Scripts", "python.exe")

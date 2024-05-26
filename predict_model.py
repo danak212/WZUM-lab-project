@@ -13,7 +13,7 @@ def fetch_data(season='2023-24'):
 
 def preprocess_data(data):
     print("Preprocessing data...")
-    data = data.fillna(0)  # Wypełnianie brakujących wartości zerami
+    data = data.fillna(0)
     features = data[['PTS', 'REB', 'AST', 'STL', 'BLK', 'MIN', 'GP', 'FG_PCT', 'FT_PCT', 'FG3_PCT']]
     scaler = StandardScaler()
     features = scaler.fit_transform(features)
