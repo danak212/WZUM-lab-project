@@ -16,28 +16,29 @@ How to Run the Project
 
 1. Clone the repository:
 
-_git clone https://github.com/danak212/WZUM-lab-project/_
-_cd <repository_directory>_
+ _git clone https://github.com/danak212/WZUM-lab-project/_
 
-3. Set up the virtual environment:
+ _cd <repository_directory>_
 
-python -m venv venv
+2. Set up the virtual environment:
 
-source venv/bin/activate
+ _python -m venv venv_
 
-pip install -r requirements.txt
+ _source venv/bin/activate_
 
-4. Run the training script:
+ _pip install -r requirements.txt_
 
-python train_model.py model.pkl
+3. Run the training script:
 
-6. Run the prediction script:
+ _python train_model.py model.pkl_
 
-python predict_model.py model.pkl results.json
+4. Run the prediction script:
 
-8. Ensure output is properly configured:
+ _python predict_model.py model.pkl results.json_
 
-Make sure to add the parameter results.json in the project configuration to display the output data correctly.
+5. Ensure output is properly configured:
+
+ Make sure to add the parameter results.json in the project configuration to display the output data correctly.
 
 ____________________________________________________________________________________________________
 This will fetch the necessary data, train the model, and predict the players for the All-NBA and All-Rookie teams based on the 2023-24 season statistics.
