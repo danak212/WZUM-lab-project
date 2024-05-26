@@ -161,3 +161,4 @@ cython_debug/
 wyniki.json
 model.pkl
 blaszkiewicz_daniel.json
+first_prediction_result.txt
