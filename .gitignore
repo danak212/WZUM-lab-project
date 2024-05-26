@@ -160,3 +160,4 @@ cython_debug/
 .idea/
 wyniki.json
 model.pkl
+blaszkiewicz_daniel.json
