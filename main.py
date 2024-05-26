@@ -36,7 +36,24 @@ def predict(model, features):
 
 def rank_players(data):
     # Ranking graczy na podstawie statystyk
-    data['RANK'] = data[['PTS', 'REB', 'AST', 'STL', 'BLK', 'MIN', 'GP', 'FG_PCT', 'FT_PCT', 'FG3_PCT']].sum(axis=1)
+    # Wagi dla poszczególnych cech
+    weights = {
+        'PTS': 0.4,
+        'REB': 0.15,
+        'AST': 0.15,
+        'STL': 0.1,
+        'BLK': 0.1,
+        'MIN': 0.1
+    }
+    # Obliczenie rankingu
+    data['RANK'] = (
+        weights['PTS'] * data['PTS'] +
+        weights['REB'] * data['REB'] +
+        weights['AST'] * data['AST'] +
+        weights['STL'] * data['STL'] +
+        weights['BLK'] * data['BLK'] +
+        weights['MIN'] * data['MIN']
+    )
     ranked_players = data.sort_values(by='RANK', ascending=False)
     return ranked_players
 
@@ -58,18 +75,26 @@ def select_teams(ranked_players):
     return results
 
 def save_results(results, output_file):
-    with open(output_file, 'w') as f:
-        json.dump(results, f)
+    try:
+        with open(output_file, 'w') as f:
+            json.dump(results, f)
+        print(f"Results saved successfully in {output_file}")
+    except Exception as e:
+        print(f"Error saving results: {e}")
 
 def main(output_file):
-    data = fetch_data()
-    features, labels = preprocess_data(data)
-    model = train_model(features, labels)
-    predictions = predict(model, features)
-    ranked_players = rank_players(data)
-    results = select_teams(ranked_players)
-    save_results(results, output_file)
-
+    try:
+        data = fetch_data()
+        features, labels = preprocess_data(data)
+        model = train_model(features, labels)
+        predictions = predict(model, features)
+        ranked_players = rank_players(data)
+        results = select_teams(ranked_players)
+        print("Saving results to:", output_file)
+        print("Results:", results)  # Debugging output
+        save_results(results, output_file)
+    except Exception as e:
+        print(f"Error in main execution: {e}")
 
 if __name__ == "__main__":
     import sys
