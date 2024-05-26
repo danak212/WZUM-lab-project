@@ -1,5 +1,3 @@
-# Wersja z graczami jak w "wyniki.json"
-
 import subprocess
 import os
 
