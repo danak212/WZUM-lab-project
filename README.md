@@ -20,6 +20,7 @@ cd <repository_directory>
 
 3. Set up the virtual environment:
 python -m venv venv
+
 source venv/bin/activate
 pip install -r requirements.txt
 
