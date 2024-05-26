@@ -1,4 +1,4 @@
-# Wersja z graczami jak w "wyniki.json"
+# Wersja z graczami jak w "wyniki.json"...
 
 import subprocess
 import os
