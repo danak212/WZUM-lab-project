@@ -1,4 +1,4 @@
-# TO JEST NAJBLIŻSZA REALNYM WYNIKOM WERSJA
+# Wersja z graczami jak w "wyniki.json"
 
 import subprocess
 import os
