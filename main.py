@@ -1,3 +1,5 @@
+# TO JEST NAJBLIŻSZA REALNYM WYNIKOM WERSJA
+
 import subprocess
 import os
 
