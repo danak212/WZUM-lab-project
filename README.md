@@ -12,7 +12,7 @@ Key points:
 2. Trains a model to make predictions based on player performance data.
 
 ____________________________________________________________________________________________________
-How to Run the Project
+**How to Run the Project**
 
 1. Clone the repository:
 
