@@ -6,6 +6,7 @@ import json
 
 def fetch_data(season='2023-24'):
     # Fetch player statistics from the NBA API
+    # Pobieranie statystyk zawodników z interfejsu API NBA
     print("Fetching NBA API data...")
     data = leaguedashplayerstats.LeagueDashPlayerStats(season=season).get_data_frames()[0]
     print("Data fetched successfully from NBA API")
@@ -13,6 +14,7 @@ def fetch_data(season='2023-24'):
 
 def preprocess_data(data):
     # Preprocess the data by filling missing values and standardizing the features
+    # Przetwarzanie danych poprzez wypełnianie brakujących wartości i standaryzację cech
     print("Preprocessing data...")
     data = data.fillna(0)
     features = data[['PTS', 'REB', 'AST', 'STL', 'BLK', 'MIN', 'GP', 'FG_PCT', 'FT_PCT', 'FG3_PCT']]
@@ -23,6 +25,7 @@ def preprocess_data(data):
 
 def rank_players(data):
     # Rank the players based on their combined statistics
+    # Ranking zawodników na podstawie ich skumulowanych statystyk
     print("Ranking players...")
     data['RANK'] = data[['PTS', 'REB', 'AST', 'STL', 'BLK', 'MIN', 'GP', 'FG_PCT', 'FT_PCT', 'FG3_PCT']].sum(axis=1)
     ranked_players = data.sort_values(by='RANK', ascending=False)
@@ -31,6 +34,7 @@ def rank_players(data):
 
 def select_teams(ranked_players):
     # Select the top players for each of the teams
+    # Wybór najlepszych zawodników do każdej z drużyn
     print("Selecting teams...")
 
     first_team = ranked_players.head(5)['PLAYER_NAME'].tolist()
@@ -38,6 +42,7 @@ def select_teams(ranked_players):
     third_team = ranked_players.iloc[10:15]['PLAYER_NAME'].tolist()
 
     # Select rookie teams based on the remaining top players
+    # Wybór drużyn debiutantów na podstawie pozostałych najlepszych zawodników
     rookie_players = ranked_players.iloc[15:25]['PLAYER_NAME'].tolist()
     first_rookie_team = rookie_players[:5]
     second_rookie_team = rookie_players[5:]
@@ -54,6 +59,7 @@ def select_teams(ranked_players):
 
 def save_results(results, output_file):
     # Save the results to a JSON file
+    # Zapis wyników do pliku JSON
     try:
         with open(output_file, 'w') as f:
             json.dump(results, f, indent=4)
@@ -63,6 +69,7 @@ def save_results(results, output_file):
 
 def main(model_file, output_file):
     # Main function to load the model, fetch data, preprocess, rank players, select teams, and save results
+    # Główna funkcja do ładowania modelu, pobierania danych, przetwarzania, rankowania zawodników, wybierania drużyn i zapisywania wyników
     model = joblib.load(model_file)
     data = fetch_data()
     features, processed_data = preprocess_data(data)
