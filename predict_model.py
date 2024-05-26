@@ -48,7 +48,7 @@ def select_teams(ranked_players):
 def save_results(results, output_file):
     try:
         with open(output_file, 'w') as f:
-            json.dump(results, f)
+            json.dump(results, f, indent=4)
         print(f"Results saved successfully in {output_file}")
     except Exception as e:
         print(f"Error saving results: {e}")
