@@ -15,22 +15,29 @@ ________________________________________________________________________________
 How to Run the Project
 
 1. Clone the repository:
+
 git clone https://github.com/danak212/WZUM-lab-project/
+
 cd <repository_directory>
 
 3. Set up the virtual environment:
+
 python -m venv venv
 
 source venv/bin/activate
+
 pip install -r requirements.txt
 
 4. Run the training script:
+
 python train_model.py model.pkl
 
-5. Run the prediction script:
+6. Run the prediction script:
+
 python predict_model.py model.pkl results.json
 
-6. Ensure output is properly configured:
+8. Ensure output is properly configured:
+
 Make sure to add the parameter results.json in the project configuration to display the output data correctly.
 
 ____________________________________________________________________________________________________
