@@ -20,10 +20,9 @@ def preprocess_data(data):
     print("Data preprocessed successfully")
     return features
 
-def rank_players(data, model):
+def rank_players(data):
     print("Ranking players...")
-    features = preprocess_data(data)
-    data['RANK'] = model.predict_proba(features)[:, 1]  # Assuming second column is probability for the positive class
+    data['RANK'] = data[['PTS', 'REB', 'AST', 'STL', 'BLK', 'MIN', 'GP', 'FG_PCT', 'FT_PCT', 'FG3_PCT']].sum(axis=1)
     ranked_players = data.sort_values(by='RANK', ascending=False)
     print("Players ranked successfully")
     return ranked_players
@@ -57,7 +56,7 @@ def save_results(results, output_file):
 def main(model_file, output_file):
     model = joblib.load(model_file)
     data = fetch_data()
-    ranked_players = rank_players(data, model)
+    ranked_players = rank_players(data)
     results = select_teams(ranked_players)
     save_results(results, output_file)
 
