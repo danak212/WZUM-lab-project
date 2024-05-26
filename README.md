@@ -17,8 +17,7 @@ ________________________________________________________________________________
 1. Clone the repository:
 
     _git clone https://github.com/danak212/WZUM-lab-project/_
-
-_cd <repository_directory>_
+    _cd <repository_directory>_
 
 2. Set up the virtual environment:
 
