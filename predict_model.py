@@ -1,14 +1,13 @@
 import pandas as pd
-import numpy as np
 from nba_api.stats.endpoints import leaguedashplayerstats
-import json
-import joblib
 from sklearn.preprocessing import StandardScaler
+import joblib
+import json
 
 def fetch_data(season='2023-24'):
-    print("Fetching data...")
+    print("Fetching NBA API data...")
     data = leaguedashplayerstats.LeagueDashPlayerStats(season=season).get_data_frames()[0]
-    print("Data fetched successfully")
+    print("Data fetched successfully from NBA API")
     return data
 
 def preprocess_data(data):
@@ -18,7 +17,7 @@ def preprocess_data(data):
     scaler = StandardScaler()
     features = scaler.fit_transform(features)
     print("Data preprocessed successfully")
-    return features
+    return features, data
 
 def rank_players(data):
     print("Ranking players...")
@@ -29,11 +28,15 @@ def rank_players(data):
 
 def select_teams(ranked_players):
     print("Selecting teams...")
+
     first_team = ranked_players.head(5)['PLAYER_NAME'].tolist()
     second_team = ranked_players.iloc[5:10]['PLAYER_NAME'].tolist()
     third_team = ranked_players.iloc[10:15]['PLAYER_NAME'].tolist()
-    first_rookie_team = ranked_players.iloc[15:20]['PLAYER_NAME'].tolist()
-    second_rookie_team = ranked_players.iloc[20:25]['PLAYER_NAME'].tolist()
+
+    # Dla zespołów rookie, na razie wybieramy pozostałych najlepszych graczy
+    rookie_players = ranked_players.iloc[15:25]['PLAYER_NAME'].tolist()
+    first_rookie_team = rookie_players[:5]
+    second_rookie_team = rookie_players[5:]
 
     results = {
         "first all-nba team": first_team,
@@ -56,7 +59,8 @@ def save_results(results, output_file):
 def main(model_file, output_file):
     model = joblib.load(model_file)
     data = fetch_data()
-    ranked_players = rank_players(data)
+    features, processed_data = preprocess_data(data)
+    ranked_players = rank_players(processed_data)
     results = select_teams(ranked_players)
     save_results(results, output_file)
 
