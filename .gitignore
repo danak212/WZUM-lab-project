@@ -160,6 +160,5 @@ cython_debug/
 .idea/
 wyniki.json
 model.pkl
-blaszkiewicz_daniel.json
 first_prediction_result.txt
 oczekiwane_piatki.txt
