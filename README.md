@@ -17,7 +17,6 @@ How to Run the Project
 1. Clone the repository:
 
 _git clone https://github.com/danak212/WZUM-lab-project/_
-
 _cd <repository_directory>_
 
 3. Set up the virtual environment:
