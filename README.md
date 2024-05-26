@@ -1,4 +1,4 @@
-# WZUM (Selected Topics in Machine Learning) - a laboratory project on the prediction of All-NBA Teams and the All-Rookie Team.
+# WZUM (eng: Selected Topics in Machine Learning) - a laboratory project on the prediction of All-NBA Teams and the All-Rookie Team.
 
 ____________________________________________________________________________________________________
  **Machine learning project** predicting the first three teams of the NBA season
