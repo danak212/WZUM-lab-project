@@ -1,12 +1,12 @@
 import os
 import subprocess
+import sys
 
 
-def main():
+def main(output_file):
     # Define the paths for the model and output files
     # Definiowanie ścieżek do plików modelu i wyników
     model_file = "model.pkl"
-    output_file = "Blaszkiewicz_Daniel.json"
 
     # Define the path to the Python executable in the virtual environment
     # Definiowanie ścieżki do pliku wykonywalnego Pythona w wirtualnym środowisku
@@ -32,4 +32,8 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 2:
+        print("Usage: python main.py <output_file>")
+        sys.exit(1)
+    output_file = sys.argv[1]
+    main(output_file)
