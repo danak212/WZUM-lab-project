@@ -4,8 +4,8 @@ import sys
 
 
 def main(output_file):
-    # Define the paths for the model and output files
-    # Definiowanie ścieżek do plików modelu i wyników
+    # Define the paths for the model
+    # Definiowanie ścieżek do plików modelu
     model_file = "model.pkl"
 
     # Define the path to the Python executable in the virtual environment

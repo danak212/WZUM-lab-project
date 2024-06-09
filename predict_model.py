@@ -73,8 +73,8 @@ def save_results(results, output_file):
 
 
 def main(model_file, output_file):
-    # Main function to load the model, fetch data, preprocess, rank players, select teams, and save results Główna
-    # funkcja do ładowania modelu, pobierania danych, przetwarzania, rankowania zawodników, wybierania drużyn i
+    # Main function to load the model, fetch data, preprocess, rank players, select teams, and save results
+    # Główna funkcja do ładowania modelu, pobierania danych, przetwarzania, rankowania zawodników, wybierania drużyn i
     # zapisywania wyników
     model = joblib.load(model_file)
     data = fetch_data()
