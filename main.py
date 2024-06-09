@@ -1,5 +1,6 @@
-import subprocess
 import os
+import subprocess
+
 
 def main():
     # Define the paths for the model and output files
@@ -28,6 +29,7 @@ def main():
         return
 
     print("Both scripts ran successfully!")
+
 
 if __name__ == "__main__":
     main()
