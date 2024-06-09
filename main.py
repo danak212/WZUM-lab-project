@@ -5,7 +5,7 @@ def main():
     # Define the paths for the model and output files
     # Definiowanie ścieżek do plików modelu i wyników
     model_file = "model.pkl"
-    output_file = "results.json"
+    output_file = "Blaszkiewicz_Daniel.json"
 
     # Define the path to the Python executable in the virtual environment
     # Definiowanie ścieżki do pliku wykonywalnego Pythona w wirtualnym środowisku
