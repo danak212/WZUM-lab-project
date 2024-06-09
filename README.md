@@ -13,7 +13,7 @@ Projekt składa się z następujących skryptów i plików:
 - `train_model.py`: Trenuje model Random Forest na statystykach zawodników.
 - `predict_model.py`: Używa wytrenowanego modelu do przewidywania i rankingu zawodników dla drużyn All-NBA i All-Rookie.
 - `model.pkl`: Plik z wytrenowanym modelem.
-- `Blaszkiewicz_Daniel.json`: Plik wyjściowy zawierający przewidywane drużyny.
+- `results.json`: Plik wyjściowy zawierający przewidywane drużyny.
 
 ## Zależności
 
@@ -137,7 +137,7 @@ import subprocess
 
 def main():
     model_file = "model.pkl"
-    output_file = "Blaszkiewicz_Daniel.json"
+    output_file = "results.json"
     venv_python = os.path.join("venv", "Scripts", "python.exe")
 
     print("Trenowanie modelu...")
@@ -163,14 +163,14 @@ if __name__ == "__main__":
 1. Upewnij się, że masz zainstalowany Python 3.11.
 2. Zainstaluj wymagane biblioteki używając `pip install -r requirements.txt`.
 3. Ustaw wirtualne środowisko i aktywuj je.
-4. Uruchom skrypt `main.py`:
+4. Uruchom skrypt `main.py`, podając jako parametr ścieżkę do nieistniejącego pliku wyjściowego z rozszerzeniem .json:
     ```
-    python main.py
+    python main.py /ścieżka/do/pliku/results.json>
     ```
 
 ### Wynik
 
-Wynik zostanie zapisany w pliku JSON o nazwie `Blaszkiewicz_Daniel.json`, zawierającym przewidywane drużyny All-NBA i All-Rookie w określonym formacie.
+Wynik zostanie zapisany w pliku JSON o nazwie `results.json`, zawierającym przewidywane drużyny All-NBA i All-Rookie w określonym formacie.
 
 ### Podsumowanie
 
@@ -194,7 +194,7 @@ The project consists of the following scripts and files:
 - `train_model.py`: Trains a Random Forest model on player statistics.
 - `predict_model.py`: Uses the trained model to predict and rank players for the All-NBA and All-Rookie teams.
 - `model.pkl`: File with the trained model.
-- `Blaszkiewicz_Daniel.json`: Output file containing the predicted teams.
+- `results.json`: Output file containing the predicted teams.
 
 ## Dependencies
 
@@ -318,7 +318,7 @@ import subprocess
 
 def main():
     model_file = "model.pkl"
-    output_file = "Blaszkiewicz_Daniel.json"
+    output_file = "results.json"
     venv_python = os.path.join("venv", "Scripts", "python.exe")
 
     print("Training the model...")
@@ -344,14 +344,14 @@ if __name__ == "__main__":
 1. Ensure you have Python 3.11 installed.
 2. Install the required libraries using `pip install -r requirements.txt`.
 3. Set up and activate a virtual environment.
-4. Run the `main.py` script:
+4. Run the `main.py` script providing the path to a non-existent output file with a .json extension as a parameter:
     ```
-    python main.py
+    python main.py /path/to/output/results.json
     ```
 
 ### Output
 
-The output will be saved in a JSON file named `Blaszkiewicz_Daniel.json`, containing the predicted All-NBA and All-Rookie teams in a specified format.
+The output will be saved in a JSON file named `results.json`, containing the predicted All-NBA and All-Rookie teams in a specified format.
 
 ### Summary
 
