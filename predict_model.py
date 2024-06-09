@@ -1,8 +1,8 @@
-import pandas as pd
 from nba_api.stats.endpoints import leaguedashplayerstats
 from sklearn.preprocessing import StandardScaler
 import joblib
 import json
+
 
 def fetch_data(season='2023-24'):
     # Fetch player statistics from the NBA API
@@ -11,6 +11,7 @@ def fetch_data(season='2023-24'):
     data = leaguedashplayerstats.LeagueDashPlayerStats(season=season).get_data_frames()[0]
     print("Data fetched successfully from NBA API")
     return data
+
 
 def preprocess_data(data):
     # Preprocess the data by filling missing values and standardizing the features
@@ -23,6 +24,7 @@ def preprocess_data(data):
     print("Data preprocessed successfully")
     return features, data
 
+
 def rank_players(data):
     # Rank the players based on their combined statistics
     # Ranking zawodników na podstawie ich skumulowanych statystyk
@@ -31,6 +33,7 @@ def rank_players(data):
     ranked_players = data.sort_values(by='RANK', ascending=False)
     print("Players ranked successfully")
     return ranked_players
+
 
 def select_teams(ranked_players):
     # Select the top players for each of the teams
@@ -57,6 +60,7 @@ def select_teams(ranked_players):
     print("Teams selected successfully")
     return results
 
+
 def save_results(results, output_file):
     # Save the results to a JSON file
     # Zapis wyników do pliku JSON
@@ -67,15 +71,18 @@ def save_results(results, output_file):
     except Exception as e:
         print(f"Error saving results: {e}")
 
+
 def main(model_file, output_file):
-    # Main function to load the model, fetch data, preprocess, rank players, select teams, and save results
-    # Główna funkcja do ładowania modelu, pobierania danych, przetwarzania, rankowania zawodników, wybierania drużyn i zapisywania wyników
+    # Main function to load the model, fetch data, preprocess, rank players, select teams, and save results Główna
+    # funkcja do ładowania modelu, pobierania danych, przetwarzania, rankowania zawodników, wybierania drużyn i
+    # zapisywania wyników
     model = joblib.load(model_file)
     data = fetch_data()
     features, processed_data = preprocess_data(data)
     ranked_players = rank_players(processed_data)
     results = select_teams(ranked_players)
     save_results(results, output_file)
+
 
 if __name__ == "__main__":
     import sys

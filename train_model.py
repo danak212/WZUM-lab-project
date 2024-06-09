@@ -1,10 +1,9 @@
-import pandas as pd
-import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 from nba_api.stats.endpoints import leaguedashplayerstats
 import joblib
 from sklearn.preprocessing import StandardScaler
+
 
 def fetch_data(season='2023-24'):
     # Fetch player statistics from the NBA API
@@ -13,6 +12,7 @@ def fetch_data(season='2023-24'):
     data = leaguedashplayerstats.LeagueDashPlayerStats(season=season).get_data_frames()[0]
     print("Data fetched successfully")
     return data
+
 
 def preprocess_data(data):
     # Preprocess the data by filling missing values and standardizing the features
@@ -26,6 +26,7 @@ def preprocess_data(data):
     print("Data preprocessed successfully")
     return features, labels
 
+
 def train_model(features, labels):
     # Train a Random Forest model on the preprocessed data
     # Trenowanie modelu Random Forest na przetworzonych danych
@@ -36,11 +37,13 @@ def train_model(features, labels):
     print("Model trained successfully")
     return model
 
+
 def save_model(model, file_name):
     # Save the trained model to a file
     # Zapis wytrenowanego modelu do pliku
     joblib.dump(model, file_name)
     print(f"Model saved to {file_name}")
+
 
 def main(model_file):
     # Main function to fetch data, preprocess, train the model, and save it
@@ -49,6 +52,7 @@ def main(model_file):
     features, labels = preprocess_data(data)
     model = train_model(features, labels)
     save_model(model, model_file)
+
 
 if __name__ == "__main__":
     import sys
