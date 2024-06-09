@@ -30,7 +30,6 @@ Projekt składa się z następujących skryptów i plików:
 
 Dane są pobierane za pomocą biblioteki `nba_api`. Endpoint `leaguedashplayerstats.LeagueDashPlayerStats` jest używany do pobrania statystyk zawodników na sezon 2023/2024.
 
-**Kod:**
 ```python
 from nba_api.stats.endpoints import leaguedashplayerstats
 
@@ -45,7 +44,6 @@ def fetch_data(season='2023-24'):
 
 Pobrane dane są przetwarzane przez wypełnienie brakujących wartości zerami oraz standaryzację cech za pomocą `StandardScaler`. Użyte cechy to punkty (PTS), zbiórki (REB), asysty (AST), przechwyty (STL), bloki (BLK), minuty gry (MIN), liczba rozegranych meczów (GP), procent celnych rzutów z gry (FG_PCT), procent celnych rzutów wolnych (FT_PCT) oraz procent celnych rzutów za trzy punkty (FG3_PCT).
 
-**Kod:**
 ```python
 from sklearn.preprocessing import StandardScaler
 
@@ -64,7 +62,6 @@ def preprocess_data(data):
 
 Model Random Forest jest trenowany na przetworzonych danych. Dane są podzielone na zestawy treningowe i testowe w proporcji 80-20. Wytrenowany model jest zapisywany do pliku za pomocą `joblib`.
 
-**Kod:**
 ```python
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -87,7 +84,6 @@ def save_model(model, file_name):
 
 Wytrenowany model jest używany do przewidywania i rankingu zawodników na podstawie ich skumulowanych statystyk. Najlepsi zawodnicy są wybierani do drużyn All-NBA i All-Rookie.
 
-**Kod:**
 ```python
 import joblib
 import json
@@ -130,7 +126,6 @@ def save_results(results, output_file):
 
 Skrypt `main.py` orkiestruje procesy trenowania i predykcji. Najpierw trenuje model poprzez uruchomienie `train_model.py`, a następnie przewiduje wyniki poprzez uruchomienie `predict_model.py`.
 
-**Kod:**
 ```python
 import os
 import subprocess
@@ -211,7 +206,6 @@ The project consists of the following scripts and files:
 
 Data is fetched using the `nba_api` library. The `leaguedashplayerstats.LeagueDashPlayerStats` endpoint is used to fetch player statistics for the 2023/2024 season.
 
-**Code:**
 ```python
 from nba_api.stats.endpoints import leaguedashplayerstats
 
@@ -226,7 +220,6 @@ def fetch_data(season='2023-24'):
 
 Fetched data is processed by filling missing values with zeros and standardizing features using `StandardScaler`. Features used are points (PTS), rebounds (REB), assists (AST), steals (STL), blocks (BLK), minutes played (MIN), games played (GP), field goal percentage (FG_PCT), free throw percentage (FT_PCT), and three-point percentage (FG3_PCT).
 
-**Code:**
 ```python
 from sklearn.preprocessing import StandardScaler
 
@@ -245,7 +238,6 @@ def preprocess_data(data):
 
 A Random Forest model is trained on the processed data. The data is split into training and test sets in an 80-20 ratio. The trained model is saved to a file using `joblib`.
 
-**Code:**
 ```python
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
@@ -268,7 +260,6 @@ def save_model(model, file_name):
 
 The trained model is used to predict and rank players based on their cumulative statistics. The top players are selected for the All-NBA and All-Rookie teams.
 
-**Code:**
 ```python
 import joblib
 import json
@@ -311,7 +302,6 @@ def save_results(results, output_file):
 
 The `main.py` script orchestrates the training and prediction processes. It first trains the model by running `train_model.py`, then predicts the results by running `predict_model.py`.
 
-**Code:**
 ```python
 import os
 import subprocess
